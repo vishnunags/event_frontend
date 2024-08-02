@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert(`Error: ${error.message}`);
             }
         } catch (error) {
-            console.error('Error registering for event:', error);
+            console.error('Error registering for event ', error);
             alert('Failed to register for event. Please try again.');
         }
     }
