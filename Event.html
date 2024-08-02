@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Registration</title>
+    <link rel="stylesheet" href="Event.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Upcoming Events</h1>
+        <ul id="events-list" class="event-list">
+            <!-- Event items will be dynamically inserted here by JavaScript -->
+        </ul>
+    </div>
+
+    <!-- Registration Form Modal -->
+    <div id="register-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-register-modal" class="close">&times;</span>
+            <h2>Register for <span id="event-name"></span></h2>
+            <form id="register-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="contact">Contact Number:</label>
+                <input type="tel" id="contact" name="contact" required>
+                <label for="email">Email ID:</label>
+                <input type="email" id="email" name="email" required>
+                <button type="submit" id="register-button">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="Event.js"></script>
+</body>
+</html>
