@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to fetch and display events
     async function fetchEvents() {
         try {
-            const response = await fetch('http://localhost:3002/api/events'); // Adjust URL if necessary
+            const response = await fetch('http://http://ec2-34-205-29-69.compute-1.amazonaws.com:3002/api/events'); // Adjust URL if necessary
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const email = emailInput.value;
 
         try {
-            const response = await fetch('http://localhost:3002/api/register', { // Adjust URL if necessary
+            const response = await fetch('http://http://ec2-34-205-29-69.compute-1.amazonaws.com:3002/api/register', { // Adjust URL if necessary
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
