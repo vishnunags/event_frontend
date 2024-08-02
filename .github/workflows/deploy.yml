@@ -21,13 +21,8 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.EVENT_SECRET }}
 
-      - name: Verify SSH connection
-        run: |
-          ssh -o StrictHostKeyChecking=no ec2-user@ec2-18-208-198-41.compute-1.amazonaws.com 'echo "SSH connection successful"'
-
-      - name: Verify directory
-        run: |
-          ssh -o StrictHostKeyChecking=no ec2-user@ec2-18-208-198-41.compute-1.amazonaws.com 'ls -la /home/ec2-user/event/event_frontend'
+      - name: Clear npm cache
+        run: npm cache clean --force
 
       - name: Pull latest changes from master
         run: |
@@ -35,8 +30,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          ssh -o StrictHostKeyChecking=no ec2-user@ec2-18-208-198-41.compute-1.amazonaws.com 'cd /home/ec2-user/event/event_frontend && sudo npm install -g http-server pm2 && ln -sf Event.html index.html'
+          ssh -o StrictHostKeyChecking=no ec2-user@ec2-18-208-198-41.compute-1.amazonaws.com 'cd /home/ec2-user/event/event_frontend && sudo npm install -g http-server && sudo npm install -g pm2 && ln -s Event.html index.html'
 
       - name: Restart PM2
         run: |
-          ssh -o StrictHostKeyChecking=no ec2-user@ec2-18-208-198-41.compute-1.amazonaws.com 'cd /home/ec2-user/event/event_frontend && pm2 restart event || pm2 start http-server --name event -- -p 8080'
+          ssh -o StrictHostKeyChecking=no ec2-user@ec2-18-208-198-41.compute-1.amazonaws.com 'cd /home/ec2-user/event/event_frontend && pm2 start http-server --name event -- -p 8080'
